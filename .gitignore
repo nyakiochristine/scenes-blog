@@ -1,0 +1,5 @@
+virtual/
+__pyache__
+.idea/
+.env/
+.vscode/
