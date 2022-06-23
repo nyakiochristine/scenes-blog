@@ -6,7 +6,7 @@ from django.db import models
 # Create your models here.
 class Contact(models.Model):
     sno = models.AutoField(primary_key=True)
-    name= models.CharField(max_length=55, max_length=70)
+    name= models.CharField(max_length=55)
     email= models.EmailField(max_length=105, blank=True)
     roll=models.CharField(max_length=15)
     content=models.TextField()
