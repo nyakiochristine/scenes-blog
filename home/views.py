@@ -5,7 +5,7 @@ from django.shortcuts import render,HttpResponse,redirect
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
-
+from blogpost.models import Post
 # Create your views here.
 def home(request):
     return render(request, 'home.html')
@@ -83,3 +83,21 @@ def handleLogout(request):
     messages.success(request, 'Logout successfully')
     return redirect('home')
 
+
+def search(request):
+    query= request.GET['query']
+    if len(query)>78:
+        allPosts = Post.objects.none()
+        
+    else:
+        allPostsTitle = Post.objects.filter(title__icontains=query)
+        allPostsAuthor = Post.objects.filter(author__icontains=query)
+        allPosts= allPostsTitle.union(allPostsAuthor)
+        
+    if allPosts.count() == 0:
+        messages.warning(request, "No posts found")
+    params={"allPosts": allPosts,"query": query}
+    return render(request,'search.html',params=params)
+        
+        
+    

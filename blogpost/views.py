@@ -1,9 +1,19 @@
 from django.shortcuts import render,redirect
 from blogpost.models import Post,BlogComment
 from django.contrib import messages
+from django.views import generic
 # Create your views here.
 def blogHome(request):
-    return render(request, 'index.html')
+    return render(request, 'bloghome.html')
+
+
+class PostList(generic.ListView):
+    queryset = Post.objects.filter(status=1).order_by('-created_on')
+    template_name = 'blogHome.html'
+
+class PostDetail(generic.DetailView):
+    model = Post
+    template_name = 'blogpost.html'
     
     
 def blogPost(request):
