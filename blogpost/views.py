@@ -4,20 +4,24 @@ from django.contrib import messages
 from django.views import generic
 # Create your views here.
 def blogHome(request):
-    return render(request, 'bloghome.html')
-
-
-class PostList(generic.ListView):
-    queryset = Post.objects.filter(status=1).order_by('-created_on')
-    template_name = 'blogHome.html'
+    return render(request, 'blogHome.html')
 
 class PostDetail(generic.DetailView):
     model = Post
-    template_name = 'blogpost.html'
+    template_name = 'post_detail.html'
+
+class PostList(generic.ListView):
+    queryset = Post.objects.filter(status=1).order_by('-created_on')
+    template_name = 'post_detail.html'
+
+
+
+
+
     
     
 def blogPost(request):
-    return render(request, 'post.html')
+    return render(request, 'blogpost.html')
 
 def postComment(request):
     if request.method == 'POST':
@@ -32,7 +36,7 @@ def postComment(request):
             messages.success(request, 'Yourcomment has been saved successfully.')
             
             
-    return redirect(f'/blog/{post.slug}')
+    return redirect(f'/blogPost/')
     
     
     
