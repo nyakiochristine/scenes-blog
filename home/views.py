@@ -60,4 +60,26 @@ def handleSignup(request):
     
     else:
         return HttpResponse('404 Not Found')
-    
+
+
+def handleLogin(request):
+    if request.method == 'POST':
+        loginusername = request.POST['loginusername']
+        loginpassword = request.POST['loginpassword']
+        
+        user = authenticate(username=loginusername, password=loginpassword)
+        
+        if user is not None:
+            login(request, user)
+            messages.success(request, 'Login successfully')
+            return redirect('home')
+        else:
+            messages.error(request, 'Invalid login credentials')
+            return redirect('home')
+    return HttpResponse('404 Not Found')
+
+def handleLogout(request):
+    logout(request)
+    messages.success(request, 'Logout successfully')
+    return redirect('home')
+
