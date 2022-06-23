@@ -1,0 +1,18 @@
+{% extends 'base.html'%}
+{% block content %}
+{% load  static %}
+<div class="container background-color:blue" >
+    <div class="img-responsive" style="background-image: url({% static 'images/travel.jpg' %}); background-repeat:no-repeat;background-size:cover">
+
+    </div>
+    <div class="text-white text-center" style="margin-top:20%">
+        <h1 style="font-size:40px;font-weight:bold;text-align:center;color:black;text-align:center">Welcome to Scenes by Pee</h1>
+        <h3 style="margin-top:10%; color:black; font-size:34px; font-weight:bold">Get to learn more about my travel journey!</h3>
+        <a href="{% url 'about' %}" class="btn btn-sm btn-info mt-4">About Me</a>
+    </div>
+
+</div>
+
+
+
+{% endblock %}
