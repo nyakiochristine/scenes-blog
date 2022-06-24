@@ -1,14 +1,12 @@
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
-
+from blogpost.views import PostList,PostDetail
+from .views import PostList,PostDetail
 from . import views
 
 urlpatterns = [
-    
-    path('home/', views.PostList.as_view(), name='home'),
-    path('blogHome/',views.blogHome,name='BlogHome'),
-    path(r'<pk>postdetail/', views.PostDetail.as_view(), name='post_detail'),
-    path(r'blogpost/',views.blogPost,name='blogPost'),
+    path('blog/', views.PostList.as_view(), name='home'),
+    path('postdetail/<int:pk>', views.PostDetail.as_view(), name='post_detail'),
     path('postComment/',views.postComment,name='postComment'),
-]
+] 
