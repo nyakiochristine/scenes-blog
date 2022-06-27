@@ -3,58 +3,86 @@
 <html>
 
     <head>
-        <title>Scenes by Pee</title>
+        <title>Scenes by P</title>
         <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Alumni+Sans+Inline+One&family=Cedarville+Cursive&family=Dancing+Script:wght@600&family=Smokum&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Alumni+Sans+Inline+One&family=Cedarville+Cursive&family=Dancing+Script:wght@600&family=Lexend+Deca:wght@200&family=Smokum&display=swap" rel="stylesheet">
         <meta name="google" content="notranslate" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
             crossorigin="anonymous" />
+            <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     </head>
 
 
     <body>
+        <div class="img-responsive" style="background-image: url('{% static 'images/travel.jpg' %}')">
         <style>
             
         .shadow {
             box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.1);
         }
-        
-        
+        background{
+            color: rgba(255, 255, 255, 0.5);
+        }
     </style>
 
-    <div id="content" style="background-image: url({% static 'images/travel.jpg' %}); background-repeat:no-repeat;background-size:cover">
-
-    </div>
+    
 
         <!-- Navigation -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-info shadow" id="mainNav">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="{% url 'home' %}">Scenes by Pee</a>
+        <nav class="navbar navbar-expand-lg navbar-light  shadow"  id="mainNav" style="background:#007D9A">
+            <div class="container-fluid">;
+                <a class="navbar-brand" href="{% url 'home' %}" style="font-size: 32px; style="font-family: 'Cedarville Cursive', cursive;" font-weight:bold;color:white;">Scenes by P</a>
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                     aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="nav navbar-nav ml-auto">
+                {% if user.is_authenticated %}
+                <li class="nav-item active">
+                    <img class="rounded-circle nav-img"src="{{ user.profile.profile_picture.url }}" alt="">
+                    &nbsp; <span class="text-white" text-align="right" title="{{ user.profile.profile_picture }}">{{user.username|title}}</span>
+                </li>
+                {% else %}
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'login' %}">Log In</a>
+                </li>
+
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'signup' %}">Sign Up</a>
+                </li>
+                {% endif %}
+            </ul>
                     <ul class="navbar-nav ml-auto">
 
-                        <li class="nav-item text-black">
+                        <li class="nav-item text-white">
                             <a class="nav-link text-black font-weight-bold" href="{% url 'about' %}">About</a>
                         </li>
 
             
 
                         
-                        <li class="nav-item text-black">
-                            <a class="nav-link text-black font-weight-bold" href="">BlogPosts</a>
+                        <li class="nav-item text-white">
+                            <a class="nav-link text-white font-weight-bold" href="{% url 'home' %}">BlogPosts</a>
                         </li>
-                        <li class="nav-item text-black">
-                            <a class="nav-link text-black font-weight-bold" href="{% url 'contact'%}">Contact</a>
+                        <li class="nav-item text-white">
+                            <a class="nav-link text-white font-weight-bold" href="{% url 'contact'%}">Contact</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
 
+
+        <div id="content" style="background-image: url({% static 'images/travel.jpg' %}); background-repeat:no-repeat;background-size:cover; background-position:center;">
+
+        </div>
+    
         
 
 <!-- Sidebar Widgets Column -->
@@ -65,9 +93,13 @@
         <!-- Content Goes here -->
         {% endblock content %}
         <!-- Footer -->
-        <footer class="py-3 bg-fixed ">
+        <footer class="py-3 fixed-bottom">
             <p class="m-0 text-dark text-center ">Copyright &copy; Scenes By Pee.Inc</p>
         </footer>
     </body>
 </html>
+
+<style>
+    body { background-color:; }
+</style>
 

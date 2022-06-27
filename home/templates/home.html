@@ -1,15 +1,21 @@
 {% extends 'base.html'%}
 {% block content %}
 {% load  static %}
-<div class="container background-color:blue" >
-    <div class="img-responsive" style="background-image: url({% static 'images/travel.jpg' %}); background-repeat:no-repeat;background-size:cover">
+<div class="container-fluid"  >
+    <div class="img-responsive" style="background-image: url('{% static 'images/travel.jpg' %}')">
 
     </div>
-    <div class="text-white text-center" style="margin-top:20%">
-        <h1 style="font-size:40px;font-weight:bold;text-align:center;color:black;text-align:center">Welcome to Scenes by Pee</h1>
-        <h3 style="margin-top:10%; color:black; font-size:34px; font-weight:bold">Get to learn more about my travel journey!</h3>
-        <a href="{% url 'about' %}" class="btn btn-sm btn-info mt-4">About Me</a>
+    <div class="text-white text-center" style="margin-top:24%">
+        <h1 style="font-size:50px;text-align:center;color:white;">Welcome to Scenes by P</h1>
+        <h3 style="margin-top:10%; color:white; font-size:34px; font-weight:bold">Get to learn more about my travel journey!</h3>
+        <a href="{% url 'about' %}" class="btn btn-lg btn-info mt-5 padding-20px">About Me</a>
     </div>
+
+    
+
+    <section>
+        <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="scenesbyp" data-description="Support me on Buy me a coffee!" data-message="Thankyou for reading my travel experiences. Support my work by buying me a coffee! Thanks in advance" data-color="#ff813f" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
+    </section>
 
 </div>
 

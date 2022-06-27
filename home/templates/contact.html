@@ -1,14 +1,14 @@
 {% extends 'base.html'%}
 {% block content %}
-<h1 style="font-size:1em; font-weight:bold; color:black; font-weight-italic:bold;">Contact Form</h1>
+<h1 style="font-size:1em; font-weight:bold; color:white; font-weight-italic:bold;">Contact Form</h1>
 <a href="{% url 'contact' %}">Contact</a>
 <!--Section: Contact v.2-->
 <section class="mb-4">
 
     <!--Section heading-->
-    <h2 class="h1-responsive font-weight-bold text-center my-4">Contact us</h2>
+    <h2 class="h1-responsive font-weight-bold text-center my-4" style="color:white;">Contact us</h2>
     <!--Section description-->
-    <p class="text-center w-responsive mx-auto mb-5">Do you have any questions? Please do not hesitate to contact us directly. Our team will come back to you within
+    <p class="text-center w-responsive mx-auto mb-5" style="color:white; font-size:25px;">Do you have any questions? Please do not hesitate to contact us directly. Our team will come back to you within
         a matter of hours to help you.</p>
 
     <div class="row">
@@ -25,7 +25,7 @@
                         
                         <div class="md-form mb-0">
                             <input type="text" id="name" name="name" class="form-control">
-                            <label for="name" class="">Your name</label>
+                            <label for="name" class="" style="color:white; font-weight:bold;font-size:22px;" >Name</label>Your name</label>
                         </div>
                         
                     </div>
@@ -35,7 +35,7 @@
                     <div class="col-md-6">
                         <div class="md-form mb-0">
                             <input type="text" id="email" name="email" class="form-control">
-                            <label for="email" class="">Your email</label>
+                            <label for="email" class=""  style="color:white; font-weight:bold;font-size:22px;">Your email</label>
                         </div>
                     </div>
                     <!--Grid column-->
@@ -48,7 +48,7 @@
                     <div class="col-md-12">
                         <div class="md-form mb-0">
                             <input type="text" id="subject" name="subject" class="form-control">
-                            <label for="subject" class="">Subject</label>
+                            <label for="subject" class=""  style="color:white; font-weight:bold;font-size:22px;">Subject</label>
                         </div>
                     </div>
                 </div>
@@ -62,17 +62,18 @@
 
                         <div class="md-form">
                             <textarea type="text" id="message" name="message" rows="2" class="form-control md-textarea"></textarea>
-                            <label for="message">Your message</label>
+                            <label for="message"  style="color:white; font-weight:bold;font-size:22px;">Your message</label>
                         </div>
 
                     </div>
                 </div>
                 <!--Grid row-->
+                {% csrf_token %}
 
             </form>
 
             <div class="text-center text-md-left">
-                <a class="btn btn-primary" onclick="document.getElementById('contact-form').submit();">Send</a>
+                <a class="btn btn-primary"  onclick="document.getElementById('contact-form').submit();">Send</a>
                 {% csrf_token %}
             </div>
             <div class="status"></div>
@@ -98,6 +99,11 @@
 
     </div>
 
+</section>
+
+
+<section>
+    <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="scenesbyp" data-description="Support me on Buy me a coffee!" data-message="Thankyou for reading my travel experiences. Support my work by buying me a coffee! Thanks in advance" data-color="#ff813f" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
 </section>
 <!--Section: Contact v.2-->
 {% endblock%}

@@ -1,0 +1,31 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <div class="card" style="padding:22px; margin-top:2px;">
+                <div class="card-body">
+                    <h4 class="card-title">
+                        <a> Register to be a member</a>
+                        <span style="float:right;">Are you a member? <a
+                            href="{% url 'login' %}" class="text-info">Login Here</a></span></h4></span>
+                    </h4>
+                    <div class="card-text">
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            {{form}}
+                            <button class="btn btn-info btn-sm">Register</button>
+
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+    
+</div>
+{% endblock %}

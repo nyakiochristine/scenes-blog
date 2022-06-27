@@ -1,11 +1,12 @@
 import email
 import re
-from home.models import Contact
+from home.models import Contact, Image
 from django.shortcuts import render,HttpResponse,redirect
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
 from blogpost.models import Post
+from .forms import SignupForm,ImageForm
 # Create your views here.
 def home(request):
     return render(request, 'home.html')
@@ -13,6 +14,20 @@ def home(request):
 def about(request):
     return render(request, 'about.html')
 
+
+def image(request):
+    if request.method == 'POST':
+        form=ImageForm(request.POST,files=request.FILES)
+        if form.is_valid():
+            form.save()
+            obj=form.instance
+            return render(request, 'images.html',{obj:obj})
+        
+    else:
+        form=ImageForm()
+    img=Image.objects.all()
+    return render(request, 'images.html',{'form':form,'img':img})
+    
 
 def contact(request):
     if request.method == 'POST':
@@ -85,6 +100,23 @@ def handleLogout(request):
     logout(request)
     messages.success(request, 'Logout successfully')
     return redirect('home')
+
+
+def signup(request):
+    if request.method == 'POST':
+        form=SignupForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=password)
+            login(request, user)
+            return redirect('home')
+    else:
+        form = SignupForm()
+    return render(request, 'registration/signup.html', {'form': form})
+
+
 
 
 def search(request):

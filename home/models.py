@@ -1,3 +1,4 @@
+from distutils.command.upload import upload
 import email
 from unicodedata import name
 from xmlrpc.client import DateTime
@@ -15,4 +16,13 @@ class Contact(models.Model):
     
     def __str__(self):
         return 'Submitted by' +self.name
+
+
+class Image(models.Model):
+    captions=models.CharField(max_length=255, blank=True)
+    image=models.ImageField(upload_to='images/')
     
+    
+    def __str__(self):
+        return self.captions
+        
