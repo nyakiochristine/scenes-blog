@@ -4,7 +4,7 @@
     body {
         font-family: "Roboto", sans-serif;
         font-size: 35px;
-        background-color: black;
+        background-color:#00AEAE;
     }
 
     .head_text {
@@ -25,23 +25,22 @@
             <div class=" col-md-8 col-md-10 mx-auto">
                 <div class="site-heading">
                     <h1 class=" site-heading my-4 mt-3 text-white font-italic font-bold"> Welcome to my Travel Blog </h1>
-                    <p class="text-light">I document my travel experieces here.
-                    </p>
+                    
                 </div>
             </div>
         </div>
     </div>
 </header>
-<div class="container-fluid">
-    <div class="row">
+<div class="container-fluid display-flex">
+    <div class="row display-flex">
         <!-- Blog Entries Column -->
         <div class="col-md-10 mt-3 left">
             {% for post in object_list %}
-            <div class="card mb-4">
+            <div class="card mb-3">
                 <div class="card-body">
-                    <h2 class="card-title">My First Blog</h2>
-                    {{ post.created_on}} </p>
-                    <p class="card-text">{{post.content|slice:":200" }}</p>
+                    <h2 class="card-title text-center"></h1>My First Blog</h1>
+                    ||{{ post.created_on}} </p>
+                    <p class="card-text">{{post.content|slice:":210" }}</p>
                     <a href="{% url 'post_detail'  post.pk %}" class="btn btn-primary">Read More &rarr;</a>
                 </div>
             </div>
