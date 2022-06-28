@@ -34,3 +34,8 @@ class BlogComment(models.Model):
     comment=  models.TextField(max_length=255, blank=True),
     user= models.ForeignKey(User, blank=True,on_delete=models.CASCADE)
     post=  models.ForeignKey(Post, blank=True,on_delete = models.CASCADE)
+    
+    
+
+
+        

@@ -1,5 +1,4 @@
-import email
-import re
+from django.utils.datastructures import MultiValueDictKeyError
 from home.models import Contact, Image
 from django.shortcuts import render,HttpResponse,redirect
 from django.contrib import messages
@@ -33,9 +32,7 @@ def contact(request):
     if request.method == 'POST':
         name= request.POST['name']
         email= request.POST['email']
-        roll= request.POST['roll']
-        content= request.POST['content']
-        print(name,email,roll,content)
+        print(name,email)
         
         if len(name)< 2 or len(roll)<5  or len(email)<2:
             messages.error(request,'Please fill the form correctly')

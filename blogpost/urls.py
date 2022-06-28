@@ -10,3 +10,7 @@ urlpatterns = [
     path('postdetail/<int:pk>', views.PostDetail.as_view(), name='post_detail'),
     path('postComment/',views.postComment,name='postComment'),
 ] 
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
