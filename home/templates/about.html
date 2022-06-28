@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
 
 <div class="col-md-10" style="margin-top:30px;font-size:22px;">
-    <div class="col-md-6">
+    <div class="col-md-10">
             <h2 class="card-header text-center" style="font-size:42px; margin-top:300px; background-color:#00AEAE;color:white;
             ">About Me</h2>
         <div class="body text-center ">
@@ -17,8 +18,8 @@
             </a>
         </div>
     </div>
-    <div< class="col-md-12">
-        <img src=" images/travel.jpg" alt="image" >
+    <div< class="col-md-2">
+        <img src="{% static 'images/coffee.jpg'%}" alt="image" height="200" width="500">
     </div>
     </div>
 
